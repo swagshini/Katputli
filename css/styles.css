@@ -4,7 +4,7 @@
     --red: #DC143C;
     --beige: #F5F5DC;
     --yellow: #FFD700;
-    --dark-blue: #191970;
+    --dark-blue: #001d3f;
     --transition: all 0.3s ease;
 }
 
@@ -40,7 +40,7 @@ body {
 
 /* Navigation */
 .nav-container {
-    background-color: var(--brown);
+    background-color: #F5F5DC;
     padding: 1rem;
     position: fixed;
     width: 100%;
@@ -58,7 +58,7 @@ body {
 }
 
 .nav-menu a {
-    color: var(--beige);
+    color: var(--dark-blue);
     text-decoration: none;
     font-weight: 500;
     transition: var(--transition);
@@ -84,15 +84,16 @@ body {
 .hero {
     height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                url('https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover;
+                url('../assets/images/Puppet show in Rajasthan.jpg') center/cover no-repeat fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
-    padding: 0 1rem;
+    padding: 0;
     position: relative;
     overflow: hidden;
+    margin: 0;
 }
 
 .hero::before {
@@ -110,6 +111,8 @@ body {
     position: relative;
     z-index: 1;
     animation: scaleIn 1s ease;
+    margin: 0;
+    padding: 0 1rem;
 }
 
 .hero-content h1 {
@@ -413,5 +416,149 @@ button:hover {
     to {
         transform: scale(4);
         opacity: 0;
+    }
+}
+
+/* Footer */
+.footer {
+    background-color: var(--dark-blue);
+    color: var(--beige);
+    padding: 3rem 2rem;
+    position: relative;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h3 {
+    color: var(--yellow);
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.footer-section p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: var(--beige);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--yellow);
+    padding-left: 5px;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: var(--beige);
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    color: var(--yellow);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(245, 245, 220, 0.1);
+}
+
+/* Craft Introduction Section */
+.craft-intro {
+    background-color: white;
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+    margin-top: 0;
+}
+
+.craft-intro-content {
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeIn 1s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.craft-intro h2 {
+    color: var(--maroon);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.craft-intro h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, var(--maroon), var(--red));
+}
+
+.craft-intro p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--dark-blue);
+    margin-bottom: 2rem;
+}
+
+.craft-intro .highlight {
+    color: var(--maroon);
+    font-weight: 600;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    cursor: pointer;
+}
+
+.scroll-indicator i {
+    font-size: 2rem;
+    color: var(--maroon);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
     }
 } 
