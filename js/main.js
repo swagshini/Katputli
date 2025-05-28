@@ -97,4 +97,97 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 600);
         });
     });
+
+    // Carousel functionality
+    const carousel = document.querySelector('.carousel');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const nextButton = carousel.querySelector('.carousel-button.next');
+    const prevButton = carousel.querySelector('.carousel-button.prev');
+    const dotsContainer = carousel.querySelector('.carousel-dots');
+
+    let currentIndex = 0;
+    const slideWidth = carousel.offsetWidth;
+    let slideInterval;
+    const ROTATION_INTERVAL = 3000; // Rotate every 3 seconds
+
+    // Create dots
+    slides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+            clearInterval(slideInterval);
+            goToSlide(index);
+            startAutoRotation();
+        });
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = Array.from(dotsContainer.children);
+
+    // Update dots
+    function updateDots() {
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    // Go to specific slide
+    function goToSlide(index) {
+        currentIndex = index;
+        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        updateDots();
+    }
+
+    // Next slide
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        goToSlide(currentIndex);
+    }
+
+    // Previous slide
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        goToSlide(currentIndex);
+    }
+
+    // Start auto rotation
+    function startAutoRotation() {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, ROTATION_INTERVAL);
+    }
+
+    // Event listeners
+    nextButton.addEventListener('click', () => {
+        clearInterval(slideInterval);
+        nextSlide();
+        startAutoRotation();
+    });
+
+    prevButton.addEventListener('click', () => {
+        clearInterval(slideInterval);
+        prevSlide();
+        startAutoRotation();
+    });
+
+    // Pause auto-rotation on hover
+    carousel.addEventListener('mouseenter', () => {
+        clearInterval(slideInterval);
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+        startAutoRotation();
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        const newSlideWidth = carousel.offsetWidth;
+        track.style.transform = `translateX(-${currentIndex * newSlideWidth}px)`;
+    });
+
+    // Start auto-rotation initially
+    startAutoRotation();
 }); 
