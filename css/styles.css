@@ -118,7 +118,7 @@ body {
 .hero {
     height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                url('../assets/images/Puppet show in Rajasthan.jpg') center/cover no-repeat fixed;
+                url('../assets/images/Puppet show in Rajasthan.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -150,16 +150,18 @@ body {
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
+    font-size: 4.5rem;
+    margin-bottom: 1.5rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    line-height: 1.2;
 }
 
 .hero-content p {
-    font-size: 1.2rem;
-    max-width: 600px;
+    font-size: 1.8rem;
+    max-width: 800px;
     margin: 0 auto;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    line-height: 1.4;
 }
 
 /* Shop Hero Section */
@@ -265,18 +267,23 @@ section.visible {
 /* Shop Grid */
 .shop-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    padding: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .product-card {
     background: white;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     transition: var(--transition);
     position: relative;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .product-card:hover {
@@ -286,18 +293,55 @@ section.visible {
 
 .product-image {
     width: 100%;
-    height: 200px;
+    height: 100%;
     object-fit: cover;
     transition: var(--transition);
 }
 
-.product-card:hover .product-image {
-    transform: scale(1.05);
+.product-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+    padding: 2rem 1.5rem 1.5rem;
+    color: white;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
 }
 
-.product-info {
-    padding: 1.5rem;
-    background: linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0.9));
+.product-card:hover .product-info {
+    transform: translateY(0);
+}
+
+.product-info h3 {
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.product-info p {
+    font-size: 1.1rem;
+    color: var(--yellow);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.product-info button {
+    background-color: var(--yellow);
+    color: var(--dark-blue);
+    padding: 0.8rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    width: 100%;
+}
+
+.product-info button:hover {
+    background-color: white;
+    transform: translateY(-2px);
 }
 
 /* DIY Section */
@@ -435,7 +479,11 @@ button:hover {
     }
 
     .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.4rem;
     }
 }
 
@@ -538,7 +586,7 @@ button:hover {
 }
 
 .footer-section h3 {
-    color: var(--yellow);
+    color: white;
     margin-bottom: 1.5rem;
     font-size: 1.3rem;
 }
@@ -595,17 +643,39 @@ button:hover {
 .craft-intro {
     background-color: white;
     padding: 6rem 2rem;
-    text-align: center;
+    text-align: left;
     position: relative;
     margin-top: 0;
 }
 
 .craft-intro-content {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     animation: fadeIn 1s ease;
     position: relative;
     z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.craft-intro-text {
+    padding-right: 2rem;
+}
+
+.craft-intro-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.craft-intro-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .craft-intro h2 {
@@ -790,5 +860,251 @@ button:hover {
 
     .featured-details h2 {
         font-size: 2rem;
+    }
+}
+
+/* About Page Styles */
+.about-hero {
+    height: 60vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('../assets/images/Puppet show in Rajasthan.jpg') center/cover no-repeat fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-top: 60px;
+}
+
+.about-hero-content {
+    max-width: 800px;
+    padding: 0 2rem;
+}
+
+.about-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.about-hero p {
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.about-main {
+    padding: 6rem 2rem;
+    background-color: white;
+}
+
+.about-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-image {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.about-image:hover img {
+    transform: scale(1.05);
+}
+
+.about-text h2 {
+    color: var(--maroon);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--dark-blue);
+    margin-bottom: 2rem;
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: var(--transition);
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--maroon);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--dark-blue);
+    font-size: 1rem;
+}
+
+.about-features {
+    padding: 6rem 2rem;
+    background-color: var(--beige);
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: var(--transition);
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.feature-card i {
+    font-size: 2.5rem;
+    color: var(--maroon);
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+    color: var(--dark-blue);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: var(--dark-blue);
+    line-height: 1.6;
+}
+
+.about-timeline {
+    padding: 6rem 2rem;
+    background-color: white;
+}
+
+.about-timeline h2 {
+    text-align: center;
+    color: var(--maroon);
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: var(--maroon);
+}
+
+.timeline-item {
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.timeline-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: calc(50% - 30px);
+    position: relative;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-left: auto;
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    background: var(--maroon);
+    border-radius: 50%;
+}
+
+.timeline-item:nth-child(odd) .timeline-content::before {
+    left: -40px;
+}
+
+.timeline-item:nth-child(even) .timeline-content::before {
+    right: -40px;
+}
+
+.timeline-content h3 {
+    color: var(--maroon);
+    margin-bottom: 1rem;
+}
+
+.timeline-date {
+    display: block;
+    color: var(--dark-blue);
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+@media (max-width: 992px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline::before {
+        left: 30px;
+    }
+
+    .timeline-content {
+        width: calc(100% - 60px);
+        margin-left: 60px !important;
+    }
+
+    .timeline-content::before {
+        left: -40px !important;
     }
 } 
